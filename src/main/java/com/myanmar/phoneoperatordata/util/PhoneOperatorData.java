@@ -37,8 +37,8 @@ public enum PhoneOperatorData {
 			+ "91\\d{6})$"),
 	MYTEL("Mytel", "^(09|\\+?959)("
 			+ "6(7|8|9)\\d{7}|"
-			+ "650\\{6}|"
-			+ "66[0-9]\\{6})$");
+			+ "650\\d{6}|"
+			+ "66[0-9]\\d{6})$");
 	
 	private String operatorName;
 	private String regEx;
