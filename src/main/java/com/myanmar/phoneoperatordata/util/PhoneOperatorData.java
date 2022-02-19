@@ -6,7 +6,7 @@ import java.util.List;
 public enum PhoneOperatorData {
 
 	OOREDOO("Ooredoo", "^(09|\\+?959)("
-			+ "94[0-1]\\d{6}|"
+			+ "94[0-9]\\d{6}|"
 			+ "9[5-8]\\d{7})$"), 
 	TELENOR("Telenor", "^(09|\\+?959)("
 			+ "740\\d{6}|"
@@ -32,12 +32,12 @@ public enum PhoneOperatorData {
 			+ "73\\d{6}|"
 			+ "878\\d{6}|"
 			+ "8[3-7]\\d{5}|"
-			+ "88[0-9]\\d{5}|"
+			+ "88[0-9]\\d{6}|"
 			+ "89[0-9]\\d{6}|"
 			+ "91\\d{6})$"),
 	MYTEL("Mytel", "^(09|\\+?959)("
 			+ "6(7|8|9)\\d{7}|"
-			+ "650\\d{6}|"
+			+ "65[0-2]\\d{6}|"
 			+ "66[0-9]\\d{6})$");
 	
 	private String operatorName;
