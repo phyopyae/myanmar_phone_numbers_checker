@@ -24,7 +24,12 @@ public class PhoneOperatorDataController {
 	
 	@GetMapping(value="/find")
 	public ResponseEntity<?> getOperatorByPhoneNumber(@RequestParam String phoneNumber) {
-		return operatorService.getOperatorNamebyPhoneNumber(phoneNumber);
+		return operatorService.getOperatorNamebyPhoneNumberEN(phoneNumber);
+	}
+	
+	@GetMapping(value="/find/mm")
+	public ResponseEntity<?> getOperatorByPhoneNumberMM(@RequestParam String phoneNumber) {
+		return operatorService.getOperatorNamebyPhoneNumberMM(phoneNumber);
 	}
 	
 	@GetMapping(value="/checkValid")

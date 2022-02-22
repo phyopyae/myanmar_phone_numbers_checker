@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.myanmar.phoneoperatordata.util.MyanmarToEnglishNumberData;
 import com.myanmar.phoneoperatordata.util.PhoneOperatorData;
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
@@ -27,9 +28,13 @@ public class PhoneOperatorService {
 		return response;
 	}
 
-	public ResponseEntity<?> getOperatorNamebyPhoneNumber(String phoneNumber) {
+	private ResponseEntity<?> getOperatorNamebyPhoneNumber(String phoneNumber, String language) {
 		ResponseEntity<?> response = null;
 		try {
+			if (PhoneOperatorConstant.LANGUAGE_MM.equalsIgnoreCase(language)) {
+				phoneNumber = MyanmarToEnglishNumberData.getEnglishNumber(phoneNumber);
+			}
+			
 			PhoneOperatorData operator = PhoneOperatorData.getOperatorByPhoneNumber(phoneNumber);
 			if (operator != null) {
 				response = new ResponseEntity<>(operator.getOperatorName(), HttpStatus.OK);
@@ -40,6 +45,14 @@ public class PhoneOperatorService {
 			response = new ResponseEntity<>(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		return response;
+	}
+	
+	public ResponseEntity<?> getOperatorNamebyPhoneNumberEN(String phoneNumber) {
+		return getOperatorNamebyPhoneNumber(phoneNumber, PhoneOperatorConstant.LANGUAGE_EN);
+	}
+	
+	public ResponseEntity<?> getOperatorNamebyPhoneNumberMM(String phoneNumber) {
+		return getOperatorNamebyPhoneNumber(phoneNumber, PhoneOperatorConstant.LANGUAGE_MM);
 	}
 
 	public ResponseEntity<?> isPhoneNumberValid(String inputPhoneNumber) {
