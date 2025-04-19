@@ -72,4 +72,13 @@ public class PhoneOperatorService {
 		}
 		return response;
 	}
+	
+	public String getOperatorNamebyPhoneNumber(String phoneNumber) {
+		PhoneOperatorData operator = PhoneOperatorData.getOperatorByPhoneNumber(phoneNumber);
+		if (operator != null) {
+			return operator.getOperatorName();
+		}
+		return null;
+	}
+	
 }
